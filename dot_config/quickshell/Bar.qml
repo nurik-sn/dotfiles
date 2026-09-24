@@ -1,4 +1,3 @@
-// Bar.qml
 import Quickshell
 
 Scope {
