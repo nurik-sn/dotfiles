@@ -1,22 +1,47 @@
 import Quickshell
+import Quickshell.Io
 import QtQuick
 
-ShellRoot {
-    PanelWindow {
-        anchors {
-            top: true
-            left: true
-            right: true
-        }
-        height: 40
-        color: "#1e1e2e" // 背景色 (ダーク系)
+Scope {
+  id: root
+  property string time
 
-        Text {
-            anchors.centerIn: parent
-            text: "Hello, Quickshell!"
-            color: "#cdd6f4"
-            font.pixelSize: 14
-            font.bold: true
-        }
+  Variants {
+    model: Quickshell.screens
+
+    PanelWindow {
+      required property var modelData
+      screen: modelData
+
+      anchors {
+        top: true
+        left: true
+        right: true
+      }
+
+      implicitHeight: 30
+
+      Text {
+        anchors.centerIn: parent
+        text: root.time
+      }
     }
+  }
+
+  Process {
+    id: dateProc
+    command: ["date"]
+    running: true
+
+    stdout: StdioCollector {
+      onStreamFinished: root.time = this.text
+    }
+  }
+
+  Timer {
+    interval: 1000
+    running: true
+    repeat: true
+    onTriggered: dateProc.running = true
+  }
 }

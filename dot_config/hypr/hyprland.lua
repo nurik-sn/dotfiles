@@ -44,7 +44,7 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal    = "kitty"
-local fileManager = "thunar"
+local fileManager = "dolphin"
 local menu = "fuzzel"
 
 
@@ -58,12 +58,14 @@ local menu = "fuzzel"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function () 
+    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
+    hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("fcitx5 -d")
-    hl.exec_cmd("hyprpanel")
+    hl.exec_cmd("quickshell")
 end)
 
 
