@@ -20,10 +20,12 @@ Scope {
       }
 
       implicitHeight: 30
+      color: "black"
 
       Text {
         anchors.centerIn: parent
         text: root.time
+        color: "white"
       }
     }
   }
