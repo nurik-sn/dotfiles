@@ -20,12 +20,10 @@ Scope {
       }
 
       implicitHeight: 30
-      color: "gray"
 
-      Text {
+      ClockWidget {
         anchors.centerIn: parent
-        text: root.time
-        color: "white"
+        time: root.time
       }
     }
   }
