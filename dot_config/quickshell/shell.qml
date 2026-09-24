@@ -20,7 +20,7 @@ Scope {
       }
 
       implicitHeight: 30
-      color: "black"
+      color: "gray"
 
       Text {
         anchors.centerIn: parent
