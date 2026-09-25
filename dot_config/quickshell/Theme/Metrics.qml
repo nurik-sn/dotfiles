@@ -21,4 +21,6 @@ Singleton {
     readonly property int border: 1
 
     readonly property int popupWidth: 300
+
+    readonly property int popupDuration: 200
 }

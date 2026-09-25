@@ -68,7 +68,7 @@ WrapperRectangle {
         acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad | PointerDevice.Stylus
         onTapped: {
             Hyprland.dispatch(`hl.dsp.focus({ workspace = ${root.modelData.id} })`)
-            root.popup.visible = false
+            root.popup.open = false
         }
     }
 }

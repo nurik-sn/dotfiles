@@ -42,6 +42,6 @@ Rectangle {
     TapHandler {
         id: click
         acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad | PointerDevice.Stylus
-        onTapped: root.popup.visible = !root.popup.visible
+        onTapped: root.popup.open = !root.popup.open
     }
 }

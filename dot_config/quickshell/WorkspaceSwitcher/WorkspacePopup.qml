@@ -11,20 +11,43 @@ import "../Theme"
 
 PopupWindow {
     id: root
-    grabFocus: true // 自動でvisibleを変更
+    property bool open: false
+
     visible: false
-    anchor.rect.x: Metrics.spaceSm
+    anchor.rect.x: 0
     anchor.rect.y: anchor.window.height // qmllint disable unresolved-type
+    anchor.adjustment: PopupAdjustment.None // qmllint disable missing-type
     implicitWidth: background.implicitWidth
     implicitHeight: background.implicitHeight
     color: "transparent"
+    
+    onOpenChanged: {
+        if (root.open) {
+            root.visible = true
+        }
+    }
 
     WrapperRectangle {
         id: background
         color: Colors.background
-        bottomLeftRadius: Metrics.radiusSm
-        bottomRightRadius: Metrics.radiusSm
+        bottomLeftRadius: Metrics.radiusMd
+        bottomRightRadius: Metrics.radiusMd
         margin: Metrics.spaceSm
+
+        y: root.open ? 0 : -background.implicitHeight
+
+        Behavior on y {
+            NumberAnimation {
+                duration: Metrics.popupDuration
+                easing.type: Easing.OutCubic
+            }
+        }
+
+        onYChanged: {
+            if (root.open === false && background.y <= -background.implicitHeight) {
+                root.visible = false
+            }
+        }
 
         ColumnLayout {
             
@@ -36,6 +59,16 @@ PopupWindow {
                     popup: root
                 }
             }
+        }
+    }
+
+    HyprlandFocusGrab {
+        id: grab
+        windows: [ root ]
+        active: root.open
+
+        onCleared: {
+            root.open = false
         }
     }
 }
