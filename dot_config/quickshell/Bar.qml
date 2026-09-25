@@ -1,4 +1,7 @@
+// Introducing Bar
+
 import Quickshell
+import "./Theme"
 
 Scope {
   
@@ -15,13 +18,13 @@ Scope {
         right: true
       }
       
-      color: "black"
+      color: Colors.background
 
-      implicitHeight: 30
+      implicitHeight: Metrics.barHeight
 
       ClockWidget {
         anchors.centerIn: parent
-        color: "white"
+        color: Colors.foreground
       }
     }
   }
