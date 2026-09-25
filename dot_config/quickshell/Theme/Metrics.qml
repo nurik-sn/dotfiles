@@ -19,4 +19,6 @@ Singleton {
     readonly property int radiusLg: 12
 
     readonly property int border: 1
+
+    readonly property int popupWidth: 300
 }

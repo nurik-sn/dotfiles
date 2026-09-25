@@ -1,17 +1,20 @@
-// View Current Workspace
+// Workspace Switcher
 
 import Quickshell.Hyprland
 import QtQuick
 
-import "./Theme"
+import "../Theme"
 
 Rectangle {
+    id: root
     implicitWidth: Metrics.widgetHeight
     implicitHeight: Metrics.widgetHeight
     color: Colors.background
     radius: Metrics.radiusSm
     border.color: Colors.accent
     border.width: Metrics.border
+
+    required property WorkspacePopup popup
     
     Text {
         anchors.centerIn: parent
@@ -34,5 +37,11 @@ Rectangle {
                 Hyprland.dispatch('hl.dsp.focus({ workspace = "r+1" })')
             }
         }
+    }
+
+    TapHandler {
+        id: click
+        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad | PointerDevice.Stylus
+        onTapped: root.popup.visible = !root.popup.visible
     }
 }

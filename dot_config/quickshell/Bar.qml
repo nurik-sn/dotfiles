@@ -3,14 +3,16 @@
 import Quickshell
 import QtQuick
 import "./Theme"
+import "./Clock"
+import "./WorkspaceSwitcher"
 
 Scope {
   
   Variants {
     model: Quickshell.screens
 
-    // qmllint disable uncreatable-type
-    PanelWindow {
+    
+    PanelWindow { // qmllint disable uncreatable-type
       id: barWindow
       required property var modelData
       screen: modelData
@@ -29,10 +31,15 @@ Scope {
         height: barWindow.height
         color: Colors.background
 
-        CurrentWorkspace {
+        WorkspaceSwitcher {
           anchors.left: parent.left
           anchors.verticalCenter: parent.verticalCenter
           anchors.leftMargin: Metrics.spaceSm
+          popup: workspacePopup
+          WorkspacePopup {
+            id: workspacePopup
+            anchor.window: barWindow
+          }
         }
 
         ClockWidget {
