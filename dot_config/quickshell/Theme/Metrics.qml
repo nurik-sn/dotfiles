@@ -17,4 +17,6 @@ Singleton {
     readonly property int radiusSm: 4
     readonly property int radiusMd: 8
     readonly property int radiusLg: 12
+
+    readonly property int border: 1
 }

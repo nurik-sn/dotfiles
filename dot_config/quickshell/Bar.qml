@@ -1,6 +1,7 @@
 // Introducing Bar
 
 import Quickshell
+import QtQuick
 import "./Theme"
 
 Scope {
@@ -9,6 +10,7 @@ Scope {
     model: Quickshell.screens
 
     PanelWindow {
+      id: barWindow
       required property var modelData
       screen: modelData
 
@@ -18,13 +20,23 @@ Scope {
         right: true
       }
       
-      color: Colors.background
-
       implicitHeight: Metrics.barHeight
 
-      ClockWidget {
-        anchors.centerIn: parent
-        color: Colors.foreground
+      Rectangle {
+        id: barBackground
+        width: barWindow.width
+        height: barWindow.height
+        color: Colors.background
+
+        CurrentWorkspace {
+          anchors.left: parent.left
+          anchors.verticalCenter: parent.verticalCenter
+          anchors.leftMargin: Metrics.spaceSm
+        }
+
+        ClockWidget {
+          anchors.centerIn: parent
+        }
       }
     }
   }
