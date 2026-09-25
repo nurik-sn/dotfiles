@@ -1,6 +1,5 @@
 // View Current Workspace
 
-import Quickshell
 import Quickshell.Hyprland
 import QtQuick
 
@@ -21,5 +20,19 @@ Rectangle {
         font.pixelSize: Fonts.sizeBody
         font.bold: true
         color: Colors.foreground
+    }
+
+    WheelHandler {
+        id: wheel
+        // 謎にマウスがtouchpad扱いされてたので…
+        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad 
+        onWheel: event => {
+            console.log("wheel", event.angleDelta.y)
+            if (event.angleDelta.y > 0) {
+                Hyprland.dispatch('hl.dsp.focus({ workspace = "r-1" })')
+            } else if (event.angleDelta.y < 0) {
+                Hyprland.dispatch('hl.dsp.focus({ workspace = "r+1" })')
+            }
+        }
     }
 }
