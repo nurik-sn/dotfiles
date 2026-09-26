@@ -12,7 +12,7 @@ WrapperRectangle {
     required property HyprlandWorkspace modelData
     required property WorkspacePopup popup
 
-    color: Colors.background
+    color: "transparent"
     radius: Metrics.radiusSm
     margin: Metrics.spaceXs
     border.color: Colors.accent

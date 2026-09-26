@@ -17,6 +17,7 @@ Scope {
       id: barWindow
       required property var modelData
       screen: modelData
+      color: "transparent"
 
       anchors {
         top: true
@@ -30,7 +31,7 @@ Scope {
         id: barBackground
         width: barWindow.width
         height: barWindow.height
-        color: Colors.background
+        color: Colors.backgroundTranslucent
 
         WorkspaceSwitcher {
           anchors.left: parent.left

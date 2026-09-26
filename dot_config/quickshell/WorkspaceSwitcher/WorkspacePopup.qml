@@ -29,7 +29,7 @@ PopupWindow {
 
     WrapperRectangle {
         id: background
-        color: Colors.background
+        color: Colors.backgroundTranslucent
         bottomLeftRadius: Metrics.radiusMd
         bottomRightRadius: Metrics.radiusMd
         margin: Metrics.spaceSm

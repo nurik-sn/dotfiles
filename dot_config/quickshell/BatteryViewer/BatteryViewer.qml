@@ -6,10 +6,10 @@ import QtQuick
 
 import "../Theme"
 
-Text {
-    text: "Battery: " + UPower.displayDevice.percentage * 100 + "%"
-    font.family: Fonts.familySans
-    font.pixelSize: Fonts.sizeBody
-    font.bold: true
-    color: Colors.foreground
+BatteryIcon {
+    readonly property UPowerDevice device: UPower.displayDevice
+
+    level: Math.round(device.percentage  * 100) / 100
+    isCharging: device.state === UPowerDeviceState.Charging
+    visible: device.ready && device.isLaptopBattery
 }

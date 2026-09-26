@@ -13,6 +13,7 @@ Singleton {
 
     readonly property int barHeight: 32
     readonly property int widgetHeight: 24
+    readonly property int smallWidgetHeight: 16
 
     readonly property int radiusSm: 4
     readonly property int radiusMd: 8

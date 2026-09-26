@@ -9,7 +9,7 @@ Rectangle {
     id: root
     implicitWidth: Metrics.widgetHeight
     implicitHeight: Metrics.widgetHeight
-    color: Colors.background
+    color: "transparent"
     radius: Metrics.radiusSm
     border.color: Colors.accent
     border.width: Metrics.border
