@@ -5,6 +5,7 @@ import QtQuick
 import "./Theme"
 import "./Clock"
 import "./WorkspaceSwitcher"
+import "./BatteryViewer"
 
 Scope {
   
@@ -44,6 +45,12 @@ Scope {
 
         ClockWidget {
           anchors.centerIn: parent
+        }
+
+        BatteryViewer {
+          anchors.right: parent.right
+          anchors.verticalCenter: parent.verticalCenter
+          anchors.rightMargin: Metrics.spaceSm
         }
       }
     }
