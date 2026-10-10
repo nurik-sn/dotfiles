@@ -65,7 +65,6 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("fcitx5 -d")
-    hl.exec_cmd("qs")
     hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 end)
 
@@ -81,6 +80,11 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("LANG", "ja_JP.UTF-8")
 hl.env("LC_ALL", "ja_JP.UTF-8")
 hl.env("QT_QPA_PLATFORMTHEME", "gtk3")
+
+local home = os.getenv("HOME") or ""
+local current_xdg = os.getenv("XDG_DATA_DIRS") or "/usr/local/share:/usr/share"
+
+hl.env("XDG_DATA_DIRS", "/var/lib/flatpak/exports/share:" .. home .. "/.local/share/flatpak/exports/share:" .. current_xdg)
 
 -----------------------
 ----- PERMISSIONS -----
@@ -107,6 +111,10 @@ hl.env("QT_QPA_PLATFORMTHEME", "gtk3")
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
+    xwayland = {
+        force_zero_scaling = true
+    },
+
     general = {
         gaps_in  = 10,
         gaps_out = 20,
@@ -147,8 +155,8 @@ hl.config({
 
         blur = {
             enabled   = true,
-            size      = 1,
-            passes    = 1,
+            size      = 4,
+            passes    = 2,
             new_optimizations = true,
             noise = 0.0,
             contrast = 1.1,
@@ -402,4 +410,13 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
+})
+
+
+hl.layer_rule({
+    name  = "quickshell-bar-blur",
+    match = { namespace = "^quickshell-(bar|osd|notifications)$" },
+    blur = true,
+    blur_popups = true,   -- ポップアップ(メニュー)もぼかす
+    ignore_alpha = 0.3,   -- 影などの薄い部分はぼかさない
 })
