@@ -39,3 +39,5 @@ setopt HIST_REDUCE_BLANKS
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+
+path=(~/.local/bin $path)
