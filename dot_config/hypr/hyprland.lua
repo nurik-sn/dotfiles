@@ -118,7 +118,7 @@ hl.on("config.reloaded", schedule_scale_update)
 
 -- Set programs that you use
 local terminal = "kitty"
-local fileManager = "thunar"
+local fileManager = "nautilus"
 local menu = "rofi -show drun"
 
 -------------------
@@ -198,7 +198,7 @@ hl.config({
 		gaps_in = 0,
 		gaps_out = 0,
 
-		border_size = 2,
+		border_size = 1,
 
 		col = {
 			active_border = { colors = { "rgba(89b4faff)", "rgba(74c7ecff)", "rgba(b4befeff)" }, angle = 135 },
@@ -221,18 +221,18 @@ hl.config({
 		rounding = 0,
 
 		-- Change transparency of focused and unfocused windows
-		active_opacity = 0.95,
-		inactive_opacity = 0.88,
+		active_opacity = 1.00,
+		inactive_opacity = 1.00,
 
 		shadow = {
-			enabled = true,
+			enabled = false,
 			range = 12,
 			render_power = 4,
 			color = 0xee1a1a1a,
 		},
 
 		blur = {
-			enabled = true,
+			enabled = false,
 			size = 4,
 			passes = 2,
 			new_optimizations = true,
@@ -247,13 +247,13 @@ hl.config({
 	},
 
 	animations = {
-		enabled = true,
+		enabled = false,
 	},
 })
 
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
-hl.curve("fluid", { type = "bezier", points = { { 0.16, 1 }, { 0.3, 1 } } }) -- 指に吸い付く減速
-hl.curve("overshoot", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } }) -- わずかに弾む弾性
+hl.curve("fluid", { type = "bezier", points = { { 0.16, 1 }, { 0.3, 1 } } })
+hl.curve("overshoot", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
 hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
 hl.curve("almostLinear", { type = "bezier", points = { { 0.5, 0.5 }, { 0.75, 1 } } })
 hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
