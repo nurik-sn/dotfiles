@@ -3,6 +3,8 @@
 -- Add any additional keymaps here
 --
 
+vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = true, silent = true })
+
 vim.keymap.set("n", "<leader>r", function()
   local ft = vim.bo.filetype
   local cmd
@@ -38,7 +40,6 @@ vim.keymap.set("n", "<leader>r", function()
       cwd = vim.fs.dirname(file)
       cmd = "runghc " .. vim.fn.shellescape(file)
     end
-
   else
     return
   end

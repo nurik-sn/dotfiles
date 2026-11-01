@@ -13,3 +13,17 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = false
   end,
 })
+
+local function dim_inlay_hints()
+  vim.api.nvim_set_hl(0, "LspInlayHint", {
+    fg = "#555555",
+    bg = "NONE",
+    italic = true,
+  })
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = dim_inlay_hints,
+})
+
+dim_inlay_hints()
