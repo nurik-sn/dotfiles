@@ -1,0 +1,103 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    drun-display-format: "{name}";
+}
+
+* {
+    font: "Sans 12";
+    background-color: transparent;
+    text-color: #e5e7f4;
+}
+
+window {
+    width: 600px;
+    location: north;
+    anchor: north;
+    y-offset: 80px;
+    padding: 12px;
+    background-color: #1e1e2ef0;
+    border: 1px;
+    border-color: #56576b;
+    border-radius: 14px;
+}
+
+mainbox {
+    children: [inputbar, listview];
+    spacing: 10px;
+}
+
+inputbar {
+    children: [textbox-search, entry, textbox-esc];
+    spacing: 12px;
+    padding: 12px;
+    background-color: #313244;
+    border-radius: 8px;
+}
+
+textbox-search {
+    content: "";
+    font: "Symbols Nerd Font 16";
+    expand: false;
+    text-color: #9ca3bc;
+}
+
+entry {
+    placeholder: "Search applications...";
+    expand: true;
+}
+
+textbox-esc {
+    content: "ESC";
+    expand: false;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #414254;
+    text-color: #afb2c7;
+}
+
+listview {
+    lines: 5;
+    fixed-height: false;
+    spacing: 2px;
+    scrollbar: false;
+}
+
+element {
+    children: [element-icon, element-text];
+    spacing: 12px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+element-icon {
+    size: 24px;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+element selected {
+    background-color: #41465c;
+}
+
+/* 通常のアプリ行 */
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+    text-color: #cdd6f4;
+}
+
+/* 選択中のアプリ行 */
+element selected.normal {
+    background-color: #45475a;
+    text-color: #cdd6f4;
+}
+
+/* アイコンと文字の背景を統一 */
+element-icon,
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+}

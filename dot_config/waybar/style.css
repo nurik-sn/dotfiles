@@ -1,0 +1,184 @@
+/* modus-vivendi の配色に合わせた Waybar のスタイル */
+
+* {
+    font-family: "IBM Plex Sans JP", "Font Awesome 6 Free", "Font Awesome 6 Brands", sans-serif;
+    font-size: 12px;
+}
+
+/* 枠や高さのリセットはバーの中だけにする（メニューの見た目を崩さないため） */
+window#waybar * {
+    min-height: 0;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+window#waybar {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+tooltip {
+    background-color: #1e1e1e;
+    border: 1px solid #303030;
+    border-radius: 6px;
+}
+
+tooltip label {
+    color: #ffffff;
+}
+
+/* ワークスペース */
+#workspaces {
+    margin: 4px 2px;
+}
+
+#workspaces button {
+    padding: 0 6px;
+    color: #989898;
+    background-color: transparent;
+    background-image: none;
+    border-radius: 6px;
+}
+
+#workspaces button:hover {
+    background-color: #303030;
+}
+
+#workspaces button.focused {
+    color: #2fafff;
+    background-color: #1e1e1e;
+}
+
+#workspaces button.urgent {
+    color: #ff5f59;
+}
+
+/* 各モジュール共通 */
+#window,
+#mpris,
+#clock,
+#tray,
+#battery,
+#power-profiles-daemon,
+#network,
+#bluetooth,
+#pulseaudio,
+#custom-wlsunset,
+#idle_inhibitor,
+#custom-notification {
+    padding: 0 8px;
+    margin: 4px 2px;
+    background-color: #1e1e1e;
+    border-radius: 6px;
+}
+
+/* アイコンだけの項目は幅をそろえる */
+#battery,
+#network,
+#bluetooth,
+#pulseaudio,
+#custom-wlsunset,
+#idle_inhibitor,
+#custom-notification {
+    min-width: 18px;
+}
+
+/* ウィンドウがないときはタイトル欄を消す */
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+/* 状態ごとの色 */
+#mpris.paused,
+#pulseaudio.muted,
+#bluetooth.off,
+#bluetooth.disabled {
+    color: #989898;
+}
+
+/* マイク：スピーカーのミュートでは色を変えず、マイク自体のミュートでだけグレーにする */
+#pulseaudio.mic.muted {
+    color: #ffffff;
+}
+
+#pulseaudio.mic.source-muted {
+    color: #989898;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #44bc44;
+}
+
+#battery.warning:not(.charging) {
+    color: #d0bc00;
+}
+
+#battery.critical:not(.charging),
+#network.disconnected {
+    color: #ff5f59;
+}
+
+#idle_inhibitor.activated {
+    color: #2fafff;
+}
+
+/* 夜間モード：オンなら黄色、オフならグレー */
+#custom-wlsunset.on {
+    color: #d0bc00;
+}
+
+#custom-wlsunset.off {
+    color: #989898;
+}
+
+/* 通知：未読があれば青、おやすみモード中はグレー */
+#custom-notification.notification,
+#custom-notification.inhibited-notification {
+    color: #2fafff;
+}
+
+#custom-notification.dnd-notification,
+#custom-notification.dnd-none,
+#custom-notification.dnd-inhibited-notification,
+#custom-notification.dnd-inhibited-none {
+    color: #989898;
+}
+
+/* トレイの右クリックメニュー（Mozc / fcitx5 など） */
+menu {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #303030;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+menu menuitem {
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+
+menu menuitem:hover {
+    background-color: #303030;
+}
+
+menu menuitem:disabled label {
+    color: #989898;
+}
+
+menu separator {
+    min-height: 1px;
+    margin: 4px 0;
+    background-color: #303030;
+}
+
+/* 電源プロファイル：パフォーマンスは黄色、省電力は緑 */
+#power-profiles-daemon.performance {
+    color: #d0bc00;
+}
+
+#power-profiles-daemon.power-saver {
+    color: #44bc44;
+}

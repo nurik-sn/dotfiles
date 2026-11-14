@@ -195,8 +195,8 @@ hl.config({
 	},
 
 	general = {
-		gaps_in = 8,
-		gaps_out = 16,
+		gaps_in = 0,
+		gaps_out = 0,
 
 		border_size = 1,
 
@@ -218,7 +218,7 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 20,
+		rounding = 0,
 
 		-- Change transparency of focused and unfocused windows
 		active_opacity = 1.00,
@@ -233,13 +233,13 @@ hl.config({
 
 		blur = {
 			enabled = true,
-			size = 4,
+			size = 6,
 			passes = 2,
 			new_optimizations = true,
 			noise = 0.0,
-			contrast = 1.1,
-			brightness = 1.1,
-			xray = false,
+			contrast = 1.2,
+			brightness = 1.2,
+			xray = true,
 			vibrancy = 0.3,
 			vibrancy_darkness = 0.0,
 			ignore_opacity = true,
@@ -521,4 +521,9 @@ hl.layer_rule({
 	blur = true,
 	blur_popups = true, -- ポップアップ(メニュー)もぼかす
 	ignore_alpha = 0.3, -- 影などの薄い部分はぼかさない
+})
+
+hl.window_rule({
+	match = { class = "kitty" },
+	opacity = "1.0 override 1.0 override 1.0 override",
 })

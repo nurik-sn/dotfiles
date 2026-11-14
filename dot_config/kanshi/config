@@ -1,0 +1,19 @@
+profile laptop {
+    output eDP-1 enable scale 1.0
+}
+
+profile dp {
+    output eDP-1 enable scale 1.25 position 0,0
+    output DP-2 enable scale 1.5 position 1792,0
+}
+
+profile hdmi {
+    output eDP-1 enable scale 1.25 position 0,0
+    output HDMI-A-1 enable scale 1.0 position 1792,0
+}
+
+profile dp-hdmi {
+    output eDP-1 enable scale 1.25 position 0,0
+    output DP-2 enable scale 1.5 position 1792,0
+    output HDMI-A-1 enable scale 1.0 position 4352,0
+}

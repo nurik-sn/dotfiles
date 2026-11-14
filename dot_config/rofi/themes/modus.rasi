@@ -1,0 +1,122 @@
+/* Waybar と同じ modus-vivendi の配色 */
+* {
+    bg:       #000000;
+    surface:  #1e1e1e;
+    elevated: #303030;
+    fg:       #ffffff;
+    fg-muted: #989898;
+    primary:  #2fafff;
+    red:      #ff5f59;
+
+    font: "IBM Plex Sans JP 11";
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 600px;
+    padding: 8px;
+    background-color: @bg;
+    border: 1px;
+    border-color: @elevated;
+    border-radius: 6px;
+    location: north;
+    anchor: north;
+    y-offset: 80px;
+}
+
+mainbox {
+    spacing: 8px;
+    children: [ inputbar, message, listview ];
+}
+
+/* 検索欄 */
+inputbar {
+    padding: 8px 10px;
+    spacing: 8px;
+    background-color: @surface;
+    border-radius: 6px;
+    children: [ textbox-search, entry, textbox-esc ];
+}
+
+prompt {
+    text-color: @primary;
+}
+
+entry {
+    placeholder: "Search...";
+    placeholder-color: @fg-muted;
+}
+
+textbox-search {
+    content: "";
+    font: "Symbols Nerd Font 16";
+    expand: false;
+    text-color: @fg-muted;
+}
+
+textbox-esc {
+    content: "ESC";
+    expand: false;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: @elevated;
+    text-color: @fg-muted;
+}
+
+message {
+    padding: 8px;
+    background-color: @surface;
+    border-radius: 6px;
+}
+
+/* 一覧 */
+listview {
+    lines: 10;
+    spacing: 2px;
+    fixed-height: false;
+    scrollbar: false;
+}
+
+element {
+    padding: 6px 10px;
+    spacing: 8px;
+    border-radius: 6px;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+}
+
+/* 選択中の行 */
+element selected.normal {
+    background-color: @elevated;
+}
+
+/* 今つながっている Wi-Fi など */
+element normal.active,
+element alternate.active,
+element selected.active {
+    text-color: @primary;
+}
+
+element selected.active {
+    background-color: @elevated;
+}
+
+element normal.urgent,
+element alternate.urgent,
+element selected.urgent {
+    text-color: @red;
+}
+
+element-icon {
+    size: 20px;
+}
+
+element-text {
+    text-color: inherit;
+    vertical-align: 0.5;
+    highlight: bold;
+}
